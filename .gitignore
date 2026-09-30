@@ -1,0 +1,7 @@
+node_modules/
+dist/
+prompts.json
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/orca-saved-prompts-panel-plugin.iml
+/.idea/vcs.xml

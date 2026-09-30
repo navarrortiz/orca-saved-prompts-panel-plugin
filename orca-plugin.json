@@ -1,0 +1,23 @@
+{
+  "manifestVersion": 1,
+  "id": "saved-prompts",
+  "publisher": "tony",
+  "name": "Saved Prompts",
+  "version": "0.1.0",
+  "description": "Save reusable prompts and insert them into an agent terminal.",
+  "engines": { "orca": ">=1.4.0" },
+  "pluginApi": 1,
+  "main": "worker.mjs",
+  "contributes": {
+    "panels": [{ "id": "prompts", "title": "Prompts", "icon": "book", "entry": "panel.html" }],
+    "commands": [
+      { "id": "new-prompt", "title": "Saved Prompts: Nuevo prompt", "context": "global" },
+      { "id": "edit-prompts", "title": "Saved Prompts: Editar prompts", "context": "global" }
+    ]
+  },
+  "capabilities": [
+    { "kind": "workspace:read" },
+    { "kind": "terminal:send" },
+    { "kind": "notifications:show" }
+  ]
+}

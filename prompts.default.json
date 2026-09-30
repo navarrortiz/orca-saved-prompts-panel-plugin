@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Revisar cambios",
+    "text": "Revisa el diff actual buscando bugs de corrección. Lista cada hallazgo con archivo:línea, problema y fix propuesto."
+  },
+  {
+    "title": "Escribir tests",
+    "text": "Escribe tests para el código que acabas de cambiar."
+  },
+  {
+    "title": "Explicar este módulo",
+    "text": "Explícame cómo funciona este módulo"
+  },
+  {
+    "title": "Commit",
+    "text": "Crea un commit con los cambios actuales. Mensaje en formato Conventional Commits, en inglés."
+  }
+]
