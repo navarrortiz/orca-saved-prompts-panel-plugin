@@ -32,7 +32,7 @@ test('reportErrors notifies and rethrows', async () => {
 test('activate registers every worker command in the manifest', async () => {
   const manifest = JSON.parse(readFileSync(new URL('../orca-plugin.json', import.meta.url), 'utf8'));
   const commands = new Map();
-  await activate({ commands: { register: (id, fn) => commands.set(id, fn) }, host: { call: async () => {} }, log: () => {} }, '/tmp/saved-prompts-test-none.json', '/tmp/saved-prompts-test-none.html');
+  await activate({ commands: { register: (id, fn) => commands.set(id, fn) }, host: { call: async () => {} }, log: () => {} }, '/tmp/saved-prompts-test-none.json', '/tmp/saved-prompts-test-none.html', { call: async () => { throw new Error('no Orca in tests'); } });
   deactivate();
   const declared = manifest.contributes.commands.filter((c) => !c.action).map((c) => c.id);
   assert.deepEqual([...commands.keys()].sort(), declared.sort());

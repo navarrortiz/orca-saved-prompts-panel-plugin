@@ -26,12 +26,16 @@ export function toTerminalText(text) {
   return text.includes('\n') ? `${PASTE_START}${text}${PASTE_END}` : text;
 }
 
+/** Agent TUIs prefix their tab title with a status glyph (✳ ◐ ⠂…): drop anything before the first letter/digit. */
+export const cleanTitle = (title = '') => title.replace(/^[^\p{L}\p{N}]+/u, '').trim();
+
 /**
  * The plugin API gives only terminal ids, in pane-layout order, with no focus flag or tab title.
- * Best label available: position + a short id so two picks can be told apart.
+ * `titles` ({ id: { title, agent? } }) is what the worker patched into panel.html from `terminal.list`;
+ * a terminal it hasn't seen yet falls back to its position. Hint: short id so two picks can be told apart.
  */
-export function describeTerminals(terminals) {
-  return terminals.map(({ id }, i) => ({ id, label: `Terminal ${i + 1}`, hint: id.replace(/^term_/, '').slice(0, 8) }));
+export function describeTerminals(terminals, titles = {}) {
+  return terminals.map(({ id }, i) => ({ id, label: cleanTitle(titles[id]?.title) || `Terminal ${i + 1}`, hint: id.replace(/^term_/, '').slice(0, 8) }));
 }
 
 /** @returns {string | null} error message, or null when the input is sendable */

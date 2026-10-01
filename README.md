@@ -4,8 +4,9 @@ A right-sidebar panel for [Orca](https://github.com/stablyai/orca) that keeps yo
 prompts one click away and sends them straight into an agent terminal of the focused worktree.
 
 - **Panel** (`book` icon): pick a prompt, pick a terminal, send.
-- **Command palette**: `Saved Prompts: Nuevo prompt` adds a prompt, `Saved Prompts: Editar prompts`
-  opens `prompts.json` in Orca's editor. Saving the file rebuilds the panel automatically.
+- **Header ＋ / ⚙ or command palette**: `Saved Prompts: Nuevo prompt` adds a prompt, `Saved Prompts:
+  Editar prompts` opens `prompts.json` in Orca's editor. Saving the file rebuilds the panel automatically.
+  The header buttons reach the worker through a hidden `Saved Prompts (rpc)` terminal per worktree.
 
 > Orca's plugin system is **experimental** (pluginApi 1, tested on Orca 1.4.216). Things may break
 > after an Orca upgrade.
@@ -55,6 +56,7 @@ integrity-hashed, so edits to `prompts.json` would never reach the panel.
 | `pnpm build` | Bundle `src/` into single-file panel + worker in `dist/` |
 | `pnpm dev` | `build` in watch mode |
 | `pnpm check` | `test` + `build` |
+| `pnpm reload-worker` | Restart the plugin worker (Orca keeps the old one alive) |
 
 ## Prompts file
 

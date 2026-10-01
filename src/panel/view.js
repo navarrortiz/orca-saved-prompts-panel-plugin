@@ -5,6 +5,8 @@ export function createView(doc) {
   const ui = {
     summary: el('summary'),
     refresh: el('refresh'),
+    newPrompt: el('new-prompt'),
+    editPrompts: el('edit-prompts'),
     query: el('query'),
     list: el('list'),
     empty: el('empty'),
@@ -42,6 +44,8 @@ export function createView(doc) {
       ui.empty.textContent = visible.length ? '' : query ? 'Sin resultados' : 'Aún no hay prompts';
     },
     onRefresh: (fn) => ui.refresh.addEventListener('click', fn),
+    onNewPrompt: (fn) => ui.newPrompt.addEventListener('click', fn),
+    onEditPrompts: (fn) => ui.editPrompts.addEventListener('click', fn),
     onQuery: (fn) => ui.query.addEventListener('input', () => fn(ui.query.value)),
     onInsert: (fn) => (insertHandler = fn),
 

@@ -61,9 +61,9 @@ test('toTerminalText wraps only multi-line prompts in bracketed paste', () => {
   assert.equal(toTerminalText('a\nb'), '\x1b[200~a\nb\x1b[201~');
 });
 
-test('describeTerminals labels by position with a short id hint', () => {
-  assert.deepEqual(describeTerminals([{ id: 'term_141cc39f-5a2f' }, { id: 'x' }]), [
+test('describeTerminals uses the worker titles (status glyph stripped), else the position', () => {
+  assert.deepEqual(describeTerminals([{ id: 'term_141cc39f-5a2f' }, { id: 'x' }], { x: { title: '✳ Claude Code', agent: 'claude' } }), [
     { id: 'term_141cc39f-5a2f', label: 'Terminal 1', hint: '141cc39f' },
-    { id: 'x', label: 'Terminal 2', hint: 'x' },
+    { id: 'x', label: 'Claude Code', hint: 'x' },
   ]);
 });

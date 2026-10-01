@@ -14,11 +14,21 @@ export const HOST_METHOD = {
   notify: 'notifications.show', // notifications:show
 };
 
-// Worker commands; ids must match contributes.commands in orca-plugin.json.
+// Worker commands; ids must match contributes.commands in orca-plugin.json (plus the SDK's
+// `sdk-invoke`, src/sdk/protocol.js INVOKE_COMMAND).
 export const COMMAND = {
   newPrompt: 'new-prompt',
   editPrompts: 'edit-prompts',
 };
+
+// Actions served through the SDK (wired in src/worker/main.js). Not manifest commands.
+export const ACTION = {
+  newPrompt: 'new-prompt', // {} → { count }: appends a placeholder prompt and opens prompts.json
+  editPrompts: 'edit-prompts', // {} → { opened }: creates prompts.json if missing and opens it in Orca
+};
+
+// Title of this plugin's carrier terminals (sdk/worker.js): one hidden shell per focused worktree.
+export const CARRIER_TITLE = 'Saved Prompts (rpc)';
 
 // Host-enforced limits worth failing fast on client-side.
 export const LIMITS = {

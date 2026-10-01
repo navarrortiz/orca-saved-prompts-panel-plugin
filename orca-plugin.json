@@ -12,7 +12,8 @@
     "panels": [{ "id": "prompts", "title": "Prompts", "icon": "book", "entry": "panel.html" }],
     "commands": [
       { "id": "new-prompt", "title": "Saved Prompts: Nuevo prompt", "context": "global" },
-      { "id": "edit-prompts", "title": "Saved Prompts: Editar prompts", "context": "global" }
+      { "id": "edit-prompts", "title": "Saved Prompts: Editar prompts", "context": "global" },
+      { "id": "sdk-invoke", "title": "Saved Prompts: SDK (interno)", "context": "global" }
     ]
   },
   "capabilities": [
